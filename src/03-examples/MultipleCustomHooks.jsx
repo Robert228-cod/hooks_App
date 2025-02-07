@@ -15,11 +15,15 @@ export const MultipleCustomHooks = () => {
         setPokeName(event.target.value)
     }
     const confirm = () => {
-        setName(pokeName)
-        setPokeName('')
-        
-        const newValue = [...undo, pokeName]
-        setUndo(newValue)
+        if(!isEpmty(pokeName)){
+            setName(pokeName)
+            setPokeName('')
+            const newValue = [...undo, pokeName]
+            setUndo(newValue)   
+        }else{
+            setPokeName('')
+            return
+        }
     }
     const next = () => {
         if(redo.length > 0){
@@ -47,10 +51,14 @@ export const MultipleCustomHooks = () => {
             return
         }
     }
+    const isEpmty = (text) =>{
+        return text.trim() === ""
+    }
     
     //const { counter, increment, decrement,setCounter} = useCounter(1)
   
     const {data, isLoading, hasError, error} = useFectch(`https://pokeapi.co/api/v2/pokemon/${undo[undo.length - 1]}`)
+    
 
     return (
         <>
@@ -95,23 +103,28 @@ export const MultipleCustomHooks = () => {
             
             { hasError === true && 
                 <div style={ {color: "red"} }>
-                    <p> Nombre no encontrado </p>
+                    <p> Name not found </p>
                     <p> Error Nro. { error.code } </p> 
                 </div>
             }
+            {
+                ( undo.length !== 1) &&
+                    <button
+                        style={{marginTop: "40px"}}
+                        className="btn btn-primary"  
+                        onClick={ previus/*() => counter > 1 ? decrement() : null /* mandar null en un onclick es permitido */ }
+                    > ⭠ Previus </button>
+            }
 
-            <button
-                style={{marginTop: "40px"}}
-                className="btn btn-primary"  
-                onClick={ previus/*() => counter > 1 ? decrement() : null /* mandar null en un onclick es permitido */ }
-            > Previus </button>
-
-            <button
-                style={{marginTop: "40px"}}
-                className="btn btn-primary"  
-                onClick={ next/*() => increment()*/}
-            > Next </button>
-
+            {
+                ( redo.length !== 0) && 
+                    <button
+                        style={{marginTop: "40px"}}
+                        className="btn btn-primary"  
+                        onClick={ next/*() => increment()*/}
+                    > Next ⭢ </button>
+            }
+            
         </>
     )
 }
