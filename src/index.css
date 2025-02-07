@@ -1,0 +1,16 @@
+body {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+button {
+    margin-right: 10px;
+}
+.contenedor {
+    display: flex;
+}
+.elemento {
+    margin-right: 30px;
+}
