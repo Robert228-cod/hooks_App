@@ -1,5 +1,3 @@
-import { useEffect, useReducer, useState } from "react"
-import { todoReducer } from "./todoReducer"
 import { TodoList } from "./TodoList"
 import { TodoAdd } from "./TodoAdd"
 import { useTodo } from "../Hooks/useTodo"
