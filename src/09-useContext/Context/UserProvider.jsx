@@ -6,12 +6,12 @@ import { UserContext } from './UserContext'
     name: "Robert Lopez",
     email: "robertlopez@gmail.com"
 }*/   
-export const UserProvider = ({children}) => {
+export const UserProvider = ({children, estado}) => {
 
     const [user, setUser] = useState()
 
   return (
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser, estado}}>
         {children}
     </UserContext.Provider>
   )

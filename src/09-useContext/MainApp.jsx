@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navigate, Route, Routes, Link } from 'react-router-dom'
 import { HomePage } from './HomePage'
 import { AboutPage } from './AboutPage'
@@ -7,8 +7,11 @@ import { NavBar } from './NavBar'
 import { UserProvider } from './Context/UserProvider'
 
 export const MainApp = () => {
+
+  const [estado, setEstado] = useState("estado del state")
+
   return (
-    <UserProvider>
+    <UserProvider estado={estado}>
         <h1> Main App </h1>
         <NavBar />
         
