@@ -4,10 +4,11 @@ import { HomePage } from './HomePage'
 import { AboutPage } from './AboutPage'
 import { LoginPage } from './LoginPage'
 import { NavBar } from './NavBar'
+import { UserProvider } from './Context/UserProvider'
 
 export const MainApp = () => {
   return (
-    <>
+    <UserProvider>
         <h1> Main App </h1>
         <NavBar />
         
@@ -23,6 +24,6 @@ export const MainApp = () => {
             {/*<Route path='/*' element = { <LoginPage/>}/>*/}
             <Route path='/*' element = { <Navigate to="/home" /> }/>
         </Routes>
-    </>
+    </UserProvider>
   )
 }
