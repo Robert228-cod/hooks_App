@@ -55,7 +55,7 @@ export const MultipleCustomHooks = () => {
         return text.trim() === ""
     }
     
-    //const { counter, increment, decrement,setCounter} = useCounter(1)
+    const { counter, increment, decrement,setCounter} = useCounter(1)
   
     const {data, isLoading, hasError, error} = useFectch(`https://pokeapi.co/api/v2/pokemon/${undo[undo.length - 1]}`)
     
